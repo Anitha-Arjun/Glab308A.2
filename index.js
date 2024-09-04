@@ -62,10 +62,10 @@ class Adventurer extends Character {
       this.health = health;
       // Adventurers have specialized roles.
       if (Adventurer.roles.includes(role)) {
-        console.log("Role is valid");
+        console.log("Role is valid" + name);
         this.role = role;
       } else {
-        console.log("Role is invalid");
+        console.log("Role is invalid" + name);
       }
 
       // Every adventurer starts with a bed and 50 gold coins.
@@ -91,16 +91,18 @@ class Adventurer extends Character {
       } else if (adventurerRoll1 < currentRoll) {
         adventurer1.health = adventurer1.health - 1;
       } else {
-        console.log("Its Tie");
+        console.log("Its Tie -> " + adventurerRoll1 + "- > " + currentRoll);
         continue;
       }
 
-      if (this.health <= 50 && adventurerRoll1.health > 50) {
+      if (this.health <= 50 && adventurer1.health > 50) {
         console.log(`${adventurer1.name} won!`);
       } else if (adventurer1.health <= 50 && this.health > 50) {
         console.log(`${this.name} won!`);
       } else {
-        console.log("Draw");
+        console.log(
+          "No winner - > " + adventurer1.health + "- > " + this.health
+        );
       }
     }
   }
